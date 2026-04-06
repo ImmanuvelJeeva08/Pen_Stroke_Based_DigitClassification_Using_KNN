@@ -8,15 +8,21 @@ public class PenStrokeBasedDigitClassificationUsingKNN {
     private static int K = 1;
 
     public static void main(String[] args) throws IOException {
-//        if (args.length < 2) {
-//            System.err.println("Usage: java NNClassify training_file test_file [k] [-n]");
-//            System.exit(1);
-//        }
-        String trainFile = "src\\trainingFile\\pendigits_training.txt";
-        String testFile = "src\\testFile\\pendigits_test.txt";
+        if (args.length < 2) {
+            System.err.println("Usage: java NNClassify training_file test_file [k] [-n]");
+            System.exit(1);
+        }
+        String trainFile = args[0];
+        String testFile = args[1];
         for (int i = 2; i < args.length; i++) {
             if (args[i].equals("-n")) {
                 normalize = true;
+            } else {
+                try {
+                    K = Integer.parseInt(args[i]);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid K value: " + args[i] + " Using default K = 1");
+                }
             }
         }
 
@@ -48,10 +54,10 @@ public class PenStrokeBasedDigitClassificationUsingKNN {
             accs.add(acc);
         }
 
-        try (PrintWriter out = new PrintWriter(new FileWriter("src\\resultFile\\pendigits_result.txt"))) {
+        try (PrintWriter out = new PrintWriter(new FileWriter("..\\resultFile\\pendigits_result.txt"))) {
             out.printf("%-6s %-10s %-10s %-10s%n", "Index", "Predicted", "Actual", "Status");
             for (int i = 0; i < predictions.size(); i++) {
-                out.printf("%-6d %-10s %-10s %-10s%n", i, predictions.get(i), testY.get(i), accs.get(i) == 1.0 ? "✅ correct" : "❌ wrong" );
+                out.printf("%-6d %-10s %-10s %-10s%n", i, predictions.get(i), testY.get(i), accs.get(i) == 1.0 ? "correct (✓)" : "wrong (✗)" );
             }
         }
 
