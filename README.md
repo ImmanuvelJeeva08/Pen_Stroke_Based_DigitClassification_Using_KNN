@@ -114,8 +114,8 @@ Example result file:
 
 ```
 Index  Predicted  Actual  Status
-1      1          1       ✅ correct
-2      3          2       ❌ wrong
+1      1          1       correct (✓)
+2      3          2       wrong (✗)
 ```
 
 ---
@@ -129,6 +129,23 @@ Index  Predicted  Actual  Status
 
 ---
 
+## ▶️ How to Run
+
+1. Compile:
+
+```
+javac PenStrokeBasedDigitClassificationUsingKNN.java
+```
+
+2. Run:
+
+```
+java PenStrokeBasedDigitClassificationUsingKNN.java ..\trainingFile\pendigits_training.txt ..\testFile\pendigits_test.txt 3
+
+```
+
+---
+
 ## 💡 Key Insight
 
 This project demonstrates that:
@@ -136,3 +153,5 @@ This project demonstrates that:
 > Handwritten digit recognition can be performed using **pen stroke motion (coordinates)** instead of images, making it lightweight and efficient.
 
 ---
+
+
