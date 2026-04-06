@@ -51,7 +51,7 @@ public class PenStrokeBasedDigitClassificationUsingKNN {
         try (PrintWriter out = new PrintWriter(new FileWriter("src\\resultFile\\pendigits_result.txt"))) {
             out.printf("%-6s %-10s %-10s %-10s%n", "Index", "Predicted", "Actual", "Status");
             for (int i = 0; i < predictions.size(); i++) {
-                out.printf("%-6d %-10s %-10s %-10s%n", i, predictions.get(i), testY.get(i), accs.get(i) == 1.0 ? "correct" : "wrong" );
+                out.printf("%-6d %-10s %-10s %-10s%n", i, predictions.get(i), testY.get(i), accs.get(i) == 1.0 ? "✅ correct" : "❌ wrong" );
             }
         }
 
