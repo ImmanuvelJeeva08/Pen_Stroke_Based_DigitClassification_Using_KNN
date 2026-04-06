@@ -136,12 +136,3 @@ This project demonstrates that:
 > Handwritten digit recognition can be performed using **pen stroke motion (coordinates)** instead of images, making it lightweight and efficient.
 
 ---
-
-## 🔗 Future Improvements
-
-* Visualize digits as images (PNG output)
-* Compare KNN vs Bayesian accuracy
-* Add GUI visualization
-* Optimize using KD-Trees
-
----
