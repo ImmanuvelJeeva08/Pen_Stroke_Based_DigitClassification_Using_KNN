@@ -113,9 +113,9 @@ x1 y1 x2 y2 x3 y3 ... x8 y8 label
 Example result file:
 
 ```
-Index  Predicted  Actual  Correct
-1      1          1       1
-2      3          2       0
+Index  Predicted  Actual  Status
+1      1          1       ✅ correct
+2      3          2       ❌ wrong
 ```
 
 ---
