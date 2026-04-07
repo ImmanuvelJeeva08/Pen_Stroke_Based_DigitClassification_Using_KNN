@@ -57,7 +57,7 @@ public class PenStrokeBasedDigitClassificationUsingKNN {
         try (PrintWriter out = new PrintWriter(new FileWriter("..\\resultFile\\pendigits_result.txt"))) {
             out.printf("%-6s %-10s %-10s %-10s%n", "Index", "Predicted", "Actual", "Status");
             for (int i = 0; i < predictions.size(); i++) {
-                out.printf("%-6d %-10s %-10s %-10s%n", i, predictions.get(i), testY.get(i), accs.get(i) == 1.0 ? "correct (✓)" : "wrong (✗)" );
+                out.printf("%-6d %-10s %-10s %-10s%n", i+1, predictions.get(i), testY.get(i), accs.get(i) == 1.0 ? "correct (✓)" : "wrong (✗)" );
             }
         }
 
@@ -65,7 +65,7 @@ public class PenStrokeBasedDigitClassificationUsingKNN {
         for (double a : accs) sum += a;
         double overall = sum / accs.size();
         System.out.printf("Overall accuracy: %.6f%n", overall);
-        System.out.println("Predictions written to result.txt.");
+        System.out.println("Predictions written to pendigits_result.txt.");
     }
 
     private static void readData(String fname, List<double[]> X, List<String> Y) throws IOException {
@@ -136,7 +136,7 @@ public class PenStrokeBasedDigitClassificationUsingKNN {
                 double diff = v[j] - trainX[i][j];
                 d2 += diff * diff;
             }
-            distances[i] = d2; // store it
+            distances[i] = d2;
             idxs.add(i);
         }
 
