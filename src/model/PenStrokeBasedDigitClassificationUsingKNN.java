@@ -64,7 +64,8 @@ public class PenStrokeBasedDigitClassificationUsingKNN {
         double sum = 0.0;
         for (double a : accs) sum += a;
         double overall = sum / accs.size();
-        System.out.printf("Overall accuracy: %.6f%n", overall);
+        System.out.printf("Overall accuracy: %.6f%n", overall * 100 );
+        System.out.println("Overall wrong: " + (accs.size() - (int) sum));
         System.out.println("Predictions written to pendigits_result.txt.");
     }
 
