@@ -54,18 +54,28 @@ public class PenStrokeBasedDigitClassificationUsingKNN {
             accs.add(acc);
         }
 
+        int correct = 0;
         try (PrintWriter out = new PrintWriter(new FileWriter("..\\resultFile\\pendigits_result.txt"))) {
             out.printf("%-6s %-10s %-10s %-10s%n", "Index", "Predicted", "Actual", "Status");
             for (int i = 0; i < predictions.size(); i++) {
+                if (predictions.get(i).equals(testY.get(i))) {
+                    correct++;
+                }
                 out.printf("%-6d %-10s %-10s %-10s%n", i+1, predictions.get(i), testY.get(i), accs.get(i) == 1.0 ? "correct (✓)" : "wrong (✗)" );
             }
         }
 
-        double sum = 0.0;
-        for (double a : accs) sum += a;
-        double overall = sum / accs.size();
-        System.out.printf("Overall accuracy: %.6f%n", overall * 100 );
-        System.out.println("Overall wrong: " + (accs.size() - (int) sum));
+        int total = predictions.size();
+        int wrong = total - correct;
+
+        double accuracy = (correct * 100.0) / total;
+        double errorRate = (wrong * 100.0) / total;
+
+        System.out.println("Total Samples : " + total);
+        System.out.println("Correct       : " + correct);
+        System.out.println("Wrong         : " + wrong);
+        System.out.printf("Accuracy      : %.2f%%\n", accuracy);
+        System.out.printf("Error Rate    : %.2f%%\n", errorRate);
         System.out.println("Predictions written to pendigits_result.txt.");
     }
 
